@@ -22,6 +22,11 @@
             padding: 10px;
             border: 1px solid;
         }
+
+        .low{
+            color: red;
+            font-weight: bold;
+        }
     </style>
 
     <script>
@@ -38,12 +43,24 @@
                         let numberofrack = rows[i]['rackTotCnt']
                         let available = rows[i]['parkingBikeTotCnt']
 
-                        let temp_info =
-                            `<tr>
-                                <td>${place}</td>
-                                <td>${numberofrack}</td>
-                                <td>${available}</td>
-                            </tr>`
+                        let temp_info =``
+                            if(available < 5){
+                                temp_info =
+                                    `<tr class="low">
+                                        <td>${place}</td>
+                                        <td>${numberofrack}</td>
+                                        <td>${available}</td>
+                                    </tr>`
+                            }
+                            else {
+                                temp_info =
+                                    `<tr>
+                                        <td>${place}</td>
+                                        <td>${numberofrack}</td>
+                                        <td>${available}</td>
+                                    </tr>`
+                                }
+
                         $('#names-q1').append(temp_info)
                     }
                 }
